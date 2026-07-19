@@ -9,13 +9,43 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ReportRouteImport } from './routes/report'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as AssistantRouteImport } from './routes/assistant'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 
+const ReportRoute = ReportRouteImport.update({
+  id: '/report',
+  path: '/report',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssistantRoute = AssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -31,41 +61,121 @@ const ApiChatRoute = ApiChatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/analytics': typeof AnalyticsRoute
+  '/assistant': typeof AssistantRoute
+  '/community': typeof CommunityRoute
   '/dashboard': typeof DashboardRoute
+  '/report': typeof ReportRoute
   '/api/chat': typeof ApiChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/analytics': typeof AnalyticsRoute
+  '/assistant': typeof AssistantRoute
+  '/community': typeof CommunityRoute
   '/dashboard': typeof DashboardRoute
+  '/report': typeof ReportRoute
   '/api/chat': typeof ApiChatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/analytics': typeof AnalyticsRoute
+  '/assistant': typeof AssistantRoute
+  '/community': typeof CommunityRoute
   '/dashboard': typeof DashboardRoute
+  '/report': typeof ReportRoute
   '/api/chat': typeof ApiChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/api/chat'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/analytics'
+    | '/assistant'
+    | '/community'
+    | '/dashboard'
+    | '/report'
+    | '/api/chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/api/chat'
-  id: '__root__' | '/' | '/dashboard' | '/api/chat'
+  to:
+    | '/'
+    | '/about'
+    | '/analytics'
+    | '/assistant'
+    | '/community'
+    | '/dashboard'
+    | '/report'
+    | '/api/chat'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/analytics'
+    | '/assistant'
+    | '/community'
+    | '/dashboard'
+    | '/report'
+    | '/api/chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AnalyticsRoute: typeof AnalyticsRoute
+  AssistantRoute: typeof AssistantRoute
+  CommunityRoute: typeof CommunityRoute
   DashboardRoute: typeof DashboardRoute
+  ReportRoute: typeof ReportRoute
   ApiChatRoute: typeof ApiChatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/report': {
+      id: '/report'
+      path: '/report'
+      fullPath: '/report'
+      preLoaderRoute: typeof ReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assistant': {
+      id: '/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -87,7 +197,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AnalyticsRoute: AnalyticsRoute,
+  AssistantRoute: AssistantRoute,
+  CommunityRoute: CommunityRoute,
   DashboardRoute: DashboardRoute,
+  ReportRoute: ReportRoute,
   ApiChatRoute: ApiChatRoute,
 }
 export const routeTree = rootRouteImport
