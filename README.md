@@ -29,7 +29,7 @@ AI-powered Climate Action Platform
 
 ## Installation
 
-git clone https://github.com/shubhamrajjak-sys/climate-track.git
+git clone https://github.com/shubhamrajjak-sys/Climate-Track.git
 
 npm install
 
